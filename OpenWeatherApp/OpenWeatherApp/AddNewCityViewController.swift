@@ -10,6 +10,15 @@ import UIKit
 
 class AddNewCityViewController: UIViewController {
     
+    var parent: MasterViewController!
+    
+    @IBOutlet weak var cityNameTextField: UITextField!
+    
+    @IBOutlet weak var cancelButton: UIButton!
+    
+    @IBOutlet weak var finishButton: UIButton!
+    
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         let backButton: UIBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
@@ -22,20 +31,20 @@ class AddNewCityViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func finishButtonTapped(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
+        parent.addNewCity(cityNameTextField.text!)
+    }
+    
+    @IBAction func cancelButtonTapped(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
