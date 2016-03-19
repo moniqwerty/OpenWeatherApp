@@ -16,6 +16,7 @@
 		89B299A91C9CAE3400C65E0E /* OpenWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B299A81C9CAE3400C65E0E /* OpenWeatherAppTests.swift */; };
 		89B299B41C9CAE3400C65E0E /* OpenWeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B299B31C9CAE3400C65E0E /* OpenWeatherAppUITests.swift */; };
 		89B299C21C9CB52200C65E0E /* AddNewCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B299C11C9CB52200C65E0E /* AddNewCityViewController.swift */; };
+		89B299C81C9DAC8900C65E0E /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B299C71C9DAC8900C65E0E /* City.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		89B299B31C9CAE3400C65E0E /* OpenWeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherAppUITests.swift; sourceTree = "<group>"; };
 		89B299B51C9CAE3400C65E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89B299C11C9CB52200C65E0E /* AddNewCityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewCityViewController.swift; sourceTree = "<group>"; };
+		89B299C71C9DAC8900C65E0E /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = City.swift; path = Model/City.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,12 +103,14 @@
 		89B299901C9CAE3400C65E0E /* OpenWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				89B299C61C9DA9B900C65E0E /* Repository */,
+				89B299C51C9DA9B200C65E0E /* View */,
+				89B299C41C9DA9A900C65E0E /* Service */,
+				89B299C31C9DA9A200C65E0E /* Model */,
 				89B299911C9CAE3400C65E0E /* AppDelegate.swift */,
 				89B299931C9CAE3400C65E0E /* MasterViewController.swift */,
 				89B299951C9CAE3400C65E0E /* DetailViewController.swift */,
-				89B299971C9CAE3400C65E0E /* Main.storyboard */,
 				89B2999A1C9CAE3400C65E0E /* Assets.xcassets */,
-				89B2999C1C9CAE3400C65E0E /* LaunchScreen.storyboard */,
 				89B2999F1C9CAE3400C65E0E /* Info.plist */,
 				89B299C11C9CB52200C65E0E /* AddNewCityViewController.swift */,
 			);
@@ -129,6 +133,37 @@
 				89B299B51C9CAE3400C65E0E /* Info.plist */,
 			);
 			path = OpenWeatherAppUITests;
+			sourceTree = "<group>";
+		};
+		89B299C31C9DA9A200C65E0E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				89B299C71C9DAC8900C65E0E /* City.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		89B299C41C9DA9A900C65E0E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		89B299C51C9DA9B200C65E0E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				89B299971C9CAE3400C65E0E /* Main.storyboard */,
+				89B2999C1C9CAE3400C65E0E /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		89B299C61C9DA9B900C65E0E /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89B299C21C9CB52200C65E0E /* AddNewCityViewController.swift in Sources */,
+				89B299C81C9DAC8900C65E0E /* City.swift in Sources */,
 				89B299961C9CAE3400C65E0E /* DetailViewController.swift in Sources */,
 				89B299941C9CAE3400C65E0E /* MasterViewController.swift in Sources */,
 				89B299921C9CAE3400C65E0E /* AppDelegate.swift in Sources */,

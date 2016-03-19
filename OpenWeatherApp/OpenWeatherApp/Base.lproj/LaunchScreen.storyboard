@@ -16,7 +16,28 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="n0v-uU-3yT">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OpenWeatherApp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1q-8P-IVm">
+                                <rect key="frame" x="153" y="252" width="294" height="96"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="39"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="1" green="0.99102597343378485" blue="0.96254904053527335" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="n0v-uU-3yT" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="31u-pJ-cO9"/>
+                            <constraint firstItem="n0v-uU-3yT" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ANn-dN-9AT"/>
+                            <constraint firstItem="Z1q-8P-IVm" firstAttribute="centerY" secondItem="n0v-uU-3yT" secondAttribute="centerY" id="ND8-d4-614"/>
+                            <constraint firstAttribute="trailing" secondItem="n0v-uU-3yT" secondAttribute="trailing" id="WyH-Q8-IRj"/>
+                            <constraint firstItem="Z1q-8P-IVm" firstAttribute="centerX" secondItem="n0v-uU-3yT" secondAttribute="centerX" id="XMB-g0-vRQ"/>
+                            <constraint firstItem="Z1q-8P-IVm" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="232" id="cL1-xR-MhG"/>
+                            <constraint firstItem="n0v-uU-3yT" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="wbo-7Z-V39"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +45,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="1920" height="1080"/>
+    </resources>
 </document>
