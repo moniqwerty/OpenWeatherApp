@@ -9,12 +9,20 @@
 import Foundation
 
 class CityRepository  {
+    
+    var cities = [City]()
+    
     func fetchCities() -> [City]{
         var citiesArray = [City]()
         if let array: [City] = NSKeyedUnarchiver.unarchiveObjectWithFile(getPath()) as? [City] {
             citiesArray = array
         }
         return citiesArray
+    }
+    
+    func saveAll()
+    {
+        self.persistCities(self.cities)
     }
     
     func persistCities(citiesArray: [City]){

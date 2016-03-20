@@ -41,6 +41,33 @@ class MasterViewController: UITableViewController {
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         self.cities = (self.cityRepository?.fetchCities())!
+
+        for cityIteration in self.cities
+        {
+            self.weatherService?.weatherForCityName(cityIteration.cityName, completionClosure: {(city: City)  in
+                cityIteration.cityName = city.cityName
+                cityIteration.temperature = city.temperature
+                cityIteration.weatherDescription = city.weatherDescription
+                cityIteration.humidity = city.humidity
+            })
+        }
+        self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+
+    }
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        
+        for cityIteration in self.cities
+        {
+            self.weatherService?.weatherForCityName(cityIteration.cityName, completionClosure: {(city: City)  in
+                cityIteration.cityName = city.cityName
+                cityIteration.temperature = city.temperature
+                cityIteration.weatherDescription = city.weatherDescription
+                cityIteration.humidity = city.humidity
+            })
+        }
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -60,7 +87,18 @@ class MasterViewController: UITableViewController {
     func addNewCity(cityName: String){
         let city = City()
         city.cityName = cityName
+        city.temperature = 0
+        self.weatherService?.weatherForCityName(city.cityName, completionClosure: {(updatedCity: City)  in
+            city.cityName = updatedCity.cityName
+            city.temperature = updatedCity.temperature
+            city.weatherDescription = updatedCity.weatherDescription
+            city.humidity = updatedCity.humidity
+            dispatch_async(dispatch_get_main_queue()) {
+                self.tableView.reloadData()
+            }
+        })
         self.cities.append(city)
+        self.cityRepository!.cities = self.cities
         self.tableView.reloadData()
     }
     // MARK: - Segues
@@ -96,7 +134,7 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 
         let object = cities[indexPath.row]
-        cell.textLabel!.text = object.cityName
+        cell.textLabel!.text = String(format: "%@ %.0f°C",object.cityName, object.temperature!)
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
