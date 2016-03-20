@@ -12,5 +12,7 @@ class City {
     
     var cityName: String!
     var temperature: Double!
+    var humidity: Double!
+    var description: String!
     
 }

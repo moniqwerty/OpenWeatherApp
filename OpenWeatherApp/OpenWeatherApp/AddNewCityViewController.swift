@@ -33,7 +33,8 @@ class AddNewCityViewController: UIViewController {
 
     @IBAction func finishButtonTapped(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
-        parent.addNewCity(cityNameTextField.text!)
+        parent.addNewCity(cityNameTextField.text!.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()))
     }
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {

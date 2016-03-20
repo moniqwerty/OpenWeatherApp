@@ -17,6 +17,7 @@
 		89B299B41C9CAE3400C65E0E /* OpenWeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B299B31C9CAE3400C65E0E /* OpenWeatherAppUITests.swift */; };
 		89B299C21C9CB52200C65E0E /* AddNewCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B299C11C9CB52200C65E0E /* AddNewCityViewController.swift */; };
 		89B299C81C9DAC8900C65E0E /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B299C71C9DAC8900C65E0E /* City.swift */; };
+		89B299CA1C9F08E600C65E0E /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B299C91C9F08E600C65E0E /* WeatherService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		89B299B51C9CAE3400C65E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89B299C11C9CB52200C65E0E /* AddNewCityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewCityViewController.swift; sourceTree = "<group>"; };
 		89B299C71C9DAC8900C65E0E /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = City.swift; path = Model/City.swift; sourceTree = "<group>"; };
+		89B299C91C9F08E600C65E0E /* WeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherService.swift; path = Service/WeatherService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 		89B299C41C9DA9A900C65E0E /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				89B299C91C9F08E600C65E0E /* WeatherService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				89B299C81C9DAC8900C65E0E /* City.swift in Sources */,
 				89B299961C9CAE3400C65E0E /* DetailViewController.swift in Sources */,
 				89B299941C9CAE3400C65E0E /* MasterViewController.swift in Sources */,
+				89B299CA1C9F08E600C65E0E /* WeatherService.swift in Sources */,
 				89B299921C9CAE3400C65E0E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
