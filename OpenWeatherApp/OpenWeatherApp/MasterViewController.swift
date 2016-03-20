@@ -12,6 +12,21 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var cities = [City]()
+    var weatherService: WeatherService?
+        {
+        get {
+            let delegate = UIApplication.sharedApplication().delegate as? AppDelegate
+            
+            return delegate?.weatherService
+        }
+    }
+    var cityRepository: CityRepository?
+        {
+        get {
+            let delegate = UIApplication.sharedApplication().delegate as? AppDelegate
+            return delegate?.cityRepository
+        }
+    }
 
 
     override func viewDidLoad() {
@@ -25,16 +40,17 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        self.cities = (self.cityRepository?.fetchCities())!
     }
 
     override func viewWillAppear(animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
         super.viewWillAppear(animated)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.cityRepository?.persistCities(cities)
+        super.viewWillDisappear(animated)
     }
 
     func insertNewObject(sender: AnyObject) {
@@ -44,9 +60,8 @@ class MasterViewController: UITableViewController {
     func addNewCity(cityName: String){
         let city = City()
         city.cityName = cityName
-        self.cities.insert(city, atIndex: 0)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        self.cities.append(city)
+        self.tableView.reloadData()
     }
     // MARK: - Segues
 

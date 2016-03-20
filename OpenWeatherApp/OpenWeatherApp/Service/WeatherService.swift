@@ -44,7 +44,7 @@ class WeatherService{
                 {
                     if let description = weather[0]["description"] as? String
                     {
-                        city.description = description
+                        city.weatherDescription = description
                     }
                 }
                 if let name = JSONDictionary["name"] as? String

@@ -46,7 +46,7 @@ class DetailViewController: UIViewController {
     func updateView(city: City)
     {
         detailItem=city
-        self.detailDescriptionLabel.text = city.description != nil ? city.description : "N/A"
+        self.detailDescriptionLabel.text = city.weatherDescription != nil ? city.weatherDescription : "N/A"
         self.humidityLabel.text = city.humidity != nil ? String(format:"Humidity:%.0f %%", (city.humidity)!) : "N/A"
         self.temperatureLabel.text = city.temperature != nil ? String(format:"Temperature: %.0f °C", (city.temperature)!): "N/A"
         self.title = detailItem?.cityName;
