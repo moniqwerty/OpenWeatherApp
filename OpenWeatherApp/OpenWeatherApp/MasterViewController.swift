@@ -14,6 +14,7 @@ class MasterViewController: UITableViewController {
     var cities = [City]()
     var weatherService: WeatherService?
         {
+        //Get the weather service object from app delegate
         get {
             let delegate = UIApplication.sharedApplication().delegate as? AppDelegate
             
@@ -22,16 +23,17 @@ class MasterViewController: UITableViewController {
     }
     var cityRepository: CityRepository?
         {
+        //Get the repository object from app delegate
         get {
             let delegate = UIApplication.sharedApplication().delegate as? AppDelegate
             return delegate?.cityRepository
         }
     }
 
-
+    // MARK: - ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
@@ -40,8 +42,10 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        //initialize cities array
         self.cities = (self.cityRepository?.fetchCities())!
 
+        //fetch fresh data for each city
         for cityIteration in self.cities
         {
             self.weatherService?.weatherForCityName(cityIteration.cityName, completionClosure: {(city: City)  in
@@ -51,10 +55,25 @@ class MasterViewController: UITableViewController {
                 cityIteration.humidity = city.humidity
             })
         }
+        self.title = "Cities"
         self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
 
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
+        super.viewWillAppear(animated)
+    }
+    
+    //save current cities list
+    override func viewWillDisappear(animated: Bool) {
+        self.cityRepository?.persistCities(cities)
+        super.viewWillDisappear(animated)
+    }
+    
+    // MARK: - Refresh
+    
+    //fetch fresh data for each city
     func handleRefresh(refreshControl: UIRefreshControl) {
         
         for cityIteration in self.cities
@@ -69,40 +88,8 @@ class MasterViewController: UITableViewController {
         self.tableView.reloadData()
         refreshControl.endRefreshing()
     }
-
-    override func viewWillAppear(animated: Bool) {
-        self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
-        super.viewWillAppear(animated)
-    }
     
-    override func viewWillDisappear(animated: Bool) {
-        self.cityRepository?.persistCities(cities)
-        super.viewWillDisappear(animated)
-    }
-
-    func insertNewObject(sender: AnyObject) {
-        performSegueWithIdentifier("addNewCity", sender: self)
-    }
-
-    func addNewCity(cityName: String){
-        let city = City()
-        city.cityName = cityName
-        city.temperature = 0
-        self.weatherService?.weatherForCityName(city.cityName, completionClosure: {(updatedCity: City)  in
-            city.cityName = updatedCity.cityName
-            city.temperature = updatedCity.temperature
-            city.weatherDescription = updatedCity.weatherDescription
-            city.humidity = updatedCity.humidity
-            dispatch_async(dispatch_get_main_queue()) {
-                self.tableView.reloadData()
-            }
-        })
-        self.cities.append(city)
-        self.cityRepository!.cities = self.cities
-        self.tableView.reloadData()
-    }
     // MARK: - Segues
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
@@ -120,8 +107,30 @@ class MasterViewController: UITableViewController {
         }
     }
 
+    func insertNewObject(sender: AnyObject) {
+        performSegueWithIdentifier("addNewCity", sender: self)
+    }
+    
+    //add a new city to the list and fetch weather data
+    func addNewCity(cityName: String){
+        let city = City()
+        city.cityName = cityName
+        city.temperature = 0
+        self.weatherService?.weatherForCityName(city.cityName, completionClosure: {(updatedCity: City)  in
+            city.cityName = updatedCity.cityName
+            city.temperature = updatedCity.temperature
+            city.weatherDescription = updatedCity.weatherDescription
+            city.humidity = updatedCity.humidity
+            dispatch_async(dispatch_get_main_queue()) {
+                self.tableView.reloadData()
+            }
+        })
+        self.cities.append(city)
+        self.cityRepository!.cities = self.cities
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Table View
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

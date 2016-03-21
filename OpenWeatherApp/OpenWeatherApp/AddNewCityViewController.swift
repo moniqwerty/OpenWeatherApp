@@ -14,38 +14,44 @@ class AddNewCityViewController: UIViewController {
     
     @IBOutlet weak var cityNameTextField: UITextField!
     
-    @IBOutlet weak var cancelButton: UIButton!
-    
-    @IBOutlet weak var finishButton: UIButton!
-    
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         let backButton: UIBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
+    //Go back to previous screen and add a new city to the list
     @IBAction func finishButtonTapped(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
-        parent.addNewCity(cityNameTextField.text!.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet()))
+        
+        let text  = cityNameTextField.text!.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        if text.characters.count == 0
+        {
+            
+        }
+        else
+        {
+//            let try regex = NSRegularExpression(pattern: ".*[^A-Z].*", options: NSRegularExpressionOptions.CaseInsensitive)
+//
+//            if regex.firstMatchInString(text!, options: nil, range: NSMakeRange(0, text!.length)) != nil {
+//                
+            
+//            }
+        }
+        let decimalCharacters = NSCharacterSet.decimalDigitCharacterSet()
+        
+        let decimalRange = cityNameTextField.text!.rangeOfCharacterFromSet(decimalCharacters, options: NSStringCompareOptions(), range: nil)
+        
+        if decimalRange != nil {
+            
+        }
+        parent.addNewCity(text)
     }
     
+    //Go back to previous screen
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-
 }

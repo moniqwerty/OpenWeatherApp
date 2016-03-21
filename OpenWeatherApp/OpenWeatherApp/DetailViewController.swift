@@ -16,6 +16,7 @@ class DetailViewController: UIViewController {
     
     var weatherService: WeatherService?
         {
+        //Get the weather service object from app delegate
         get {
             let delegate = UIApplication.sharedApplication().delegate as? AppDelegate
             
@@ -25,24 +26,19 @@ class DetailViewController: UIViewController {
     
     var detailItem: City?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Fetch current weather data from service
         self.weatherService?.weatherForCityName(self.detailItem!.cityName,completionClosure: {(city: City)  in
             dispatch_async(dispatch_get_main_queue()) {
                 self.updateView(city)
             }
         })
         self.title = detailItem?.cityName
-        // Do any additional setup after loading the view, typically from a nib.
         self.updateView(self.detailItem!)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    //Update the UI with the fetched data for City object
     func updateView(city: City)
     {
         detailItem=city

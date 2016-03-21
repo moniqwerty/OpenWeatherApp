@@ -186,9 +186,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="cancelButton" destination="HZV-Bu-uVR" id="HAJ-Ra-L0n"/>
                         <outlet property="cityNameTextField" destination="o1j-s2-zNq" id="bLA-0L-6pc"/>
-                        <outlet property="finishButton" destination="0vl-qS-YTd" id="eXo-sq-MsU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="05c-Gi-HRs" userLabel="First Responder" sceneMemberID="firstResponder"/>
