@@ -34,52 +34,32 @@ class AddNewCityViewController: UIViewController {
     //Check if city name is valid
     func isCityValid (text: String) -> Bool
     {
-        var isValid = true
         if text.characters.count == 0
         {
-            isValid = false
             let alert = UIAlertController(title: "Error", message: "City name cannot be empty", preferredStyle: UIAlertControllerStyle.Alert)
             
             alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
             }))
             presentViewController(alert, animated: true, completion: nil)
-            return isValid
+            return false
         }
         
-        let decimalCharacters = NSCharacterSet.decimalDigitCharacterSet()
-        let decimalRange = cityNameTextField.text!.rangeOfCharacterFromSet(decimalCharacters, options: NSStringCompareOptions(), range: nil)
-        if decimalRange != nil {
-            isValid = false
-            let alert = UIAlertController(title: "Error", message: "City name cannot contain numbers", preferredStyle: UIAlertControllerStyle.Alert)
-            
+        return validateSet(NSCharacterSet.decimalDigitCharacterSet(), text: text, errorMessage: "City name cannot contain numbers") &&
+            validateSet(NSCharacterSet.punctuationCharacterSet(), text: text, errorMessage:  "City name cannot contain symbols") &&
+            validateSet(NSCharacterSet.alphanumericCharacterSet().invertedSet, text: text, errorMessage:  "City name cannot contain ilegal characters")
+    }
+    
+    func validateSet (set: NSCharacterSet, text: String, errorMessage: String) -> Bool
+    {
+        let range = text.rangeOfCharacterFromSet(set, options: NSStringCompareOptions(), range: nil)
+        if range != nil {
+            let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
             }))
             presentViewController(alert, animated: true, completion: nil)
-            return isValid
+            return false
         }
-        let symbols = NSCharacterSet.punctuationCharacterSet()
-        let symbolsRange = cityNameTextField.text!.rangeOfCharacterFromSet(symbols, options: NSStringCompareOptions(), range: nil)
-        if symbolsRange != nil {
-            isValid = false
-            let alert = UIAlertController(title: "Error", message: "City name cannot contain symbols", preferredStyle: UIAlertControllerStyle.Alert)
-            
-            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
-            }))
-            presentViewController(alert, animated: true, completion: nil)
-            return isValid
-        }
-        let invalidCharacters = NSCharacterSet.alphanumericCharacterSet().invertedSet
-        let invalidRange = cityNameTextField.text!.rangeOfCharacterFromSet(invalidCharacters, options: NSStringCompareOptions(), range: nil)
-        if invalidRange != nil {
-            isValid = false
-            let alert = UIAlertController(title: "Error", message: "City name cannot contain ilegal characters", preferredStyle: UIAlertControllerStyle.Alert)
-            
-            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
-            }))
-            presentViewController(alert, animated: true, completion: nil)
-            return isValid
-        }
-        return isValid
+        return true
     }
     
     //Go back to previous screen

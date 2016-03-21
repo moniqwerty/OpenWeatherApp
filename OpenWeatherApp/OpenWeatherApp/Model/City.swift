@@ -45,9 +45,6 @@ class City: NSObject, NSCoding{
         }
     }
     
-    override init ()
-    {
-
-    }
+    override init (){}
     
 }

@@ -10,9 +10,6 @@ import Foundation
 
 class WeatherService{
     
-    let URL_BASE = "http://api.openweathermap.org/data/2.5/weather?q="
-    let API_KEY = "&units=metric&APPID=48980cb73512bcb26f0c32be9216ffc3"
-    
     //Fethes weather data for a given city name. Returns a City object to a given completion block
     func weatherForCityName(cityName :String, completionClosure:(City)->()){
         let city = City()

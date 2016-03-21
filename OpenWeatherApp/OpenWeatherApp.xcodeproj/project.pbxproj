@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89AEB8261C9FF52B0070BCCB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEB8251C9FF52B0070BCCB /* Constants.swift */; };
 		89B299921C9CAE3400C65E0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B299911C9CAE3400C65E0E /* AppDelegate.swift */; };
 		89B299941C9CAE3400C65E0E /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B299931C9CAE3400C65E0E /* MasterViewController.swift */; };
 		89B299961C9CAE3400C65E0E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B299951C9CAE3400C65E0E /* DetailViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		89AEB8251C9FF52B0070BCCB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		89B2998E1C9CAE3400C65E0E /* OpenWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89B299911C9CAE3400C65E0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89B299931C9CAE3400C65E0E /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,23 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
+		89AEB8271C9FF64D0070BCCB /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				89AEB8251C9FF52B0070BCCB /* Constants.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		89AEB8281C9FF68B0070BCCB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				89B299CD1C9F4C9800C65E0E /* Assets.xcassets */,
+				89B2999F1C9CAE3400C65E0E /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		89B299851C9CAE3400C65E0E = {
 			isa = PBXGroup;
 			children = (
@@ -117,14 +136,14 @@
 		89B299901C9CAE3400C65E0E /* OpenWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				89AEB8271C9FF64D0070BCCB /* Util */,
 				89AEB8241C9FEBD50070BCCB /* ViewControllers */,
 				89B299C61C9DA9B900C65E0E /* Repository */,
 				89B299C51C9DA9B200C65E0E /* View */,
 				89B299C41C9DA9A900C65E0E /* Service */,
 				89B299C31C9DA9A200C65E0E /* Model */,
 				89B299911C9CAE3400C65E0E /* AppDelegate.swift */,
-				89B299CD1C9F4C9800C65E0E /* Assets.xcassets */,
-				89B2999F1C9CAE3400C65E0E /* Info.plist */,
+				89AEB8281C9FF68B0070BCCB /* Resources */,
 			);
 			path = OpenWeatherApp;
 			sourceTree = "<group>";
@@ -319,6 +338,7 @@
 				89B299CA1C9F08E600C65E0E /* WeatherService.swift in Sources */,
 				89B299921C9CAE3400C65E0E /* AppDelegate.swift in Sources */,
 				89B299CC1C9F38F600C65E0E /* CityRepository.swift in Sources */,
+				89AEB8261C9FF52B0070BCCB /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
