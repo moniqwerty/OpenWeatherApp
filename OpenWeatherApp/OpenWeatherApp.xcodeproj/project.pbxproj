@@ -84,6 +84,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		89AEB8241C9FEBD50070BCCB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				89B299C11C9CB52200C65E0E /* AddNewCityViewController.swift */,
+				89B299931C9CAE3400C65E0E /* MasterViewController.swift */,
+				89B299951C9CAE3400C65E0E /* DetailViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		89B299851C9CAE3400C65E0E = {
 			isa = PBXGroup;
 			children = (
@@ -107,16 +117,14 @@
 		89B299901C9CAE3400C65E0E /* OpenWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				89AEB8241C9FEBD50070BCCB /* ViewControllers */,
 				89B299C61C9DA9B900C65E0E /* Repository */,
 				89B299C51C9DA9B200C65E0E /* View */,
 				89B299C41C9DA9A900C65E0E /* Service */,
 				89B299C31C9DA9A200C65E0E /* Model */,
 				89B299911C9CAE3400C65E0E /* AppDelegate.swift */,
 				89B299CD1C9F4C9800C65E0E /* Assets.xcassets */,
-				89B299931C9CAE3400C65E0E /* MasterViewController.swift */,
-				89B299951C9CAE3400C65E0E /* DetailViewController.swift */,
 				89B2999F1C9CAE3400C65E0E /* Info.plist */,
-				89B299C11C9CB52200C65E0E /* AddNewCityViewController.swift */,
 			);
 			path = OpenWeatherApp;
 			sourceTree = "<group>";
@@ -240,6 +248,7 @@
 				TargetAttributes = {
 					89B2998D1C9CAE3400C65E0E = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = RS44833LBV;
 					};
 					89B299A31C9CAE3400C65E0E = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -451,6 +460,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = OpenWeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.moniqwerty.OpenWeatherApp;
@@ -462,6 +473,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = OpenWeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.moniqwerty.OpenWeatherApp;
@@ -536,6 +549,7 @@
 				89B299BA1C9CAE3400C65E0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		89B299BB1C9CAE3400C65E0E /* Build configuration list for PBXNativeTarget "OpenWeatherAppTests" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +558,7 @@
 				89B299BD1C9CAE3400C65E0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		89B299BE1C9CAE3400C65E0E /* Build configuration list for PBXNativeTarget "OpenWeatherAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -552,6 +567,7 @@
 				89B299C01C9CAE3400C65E0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

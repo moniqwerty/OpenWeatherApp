@@ -22,31 +22,64 @@ class AddNewCityViewController: UIViewController {
 
     //Go back to previous screen and add a new city to the list
     @IBAction func finishButtonTapped(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
-        
         let text  = cityNameTextField.text!.stringByTrimmingCharactersInSet(
             NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        if (self.isCityValid(text))
+        {
+            navigationController?.popViewControllerAnimated(true)
+            parent.addNewCity(text)
+        }
+    }
+    
+    //Check if city name is valid
+    func isCityValid (text: String) -> Bool
+    {
+        var isValid = true
         if text.characters.count == 0
         {
+            isValid = false
+            let alert = UIAlertController(title: "Error", message: "City name cannot be empty", preferredStyle: UIAlertControllerStyle.Alert)
             
+            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+            return isValid
         }
-        else
-        {
-//            let try regex = NSRegularExpression(pattern: ".*[^A-Z].*", options: NSRegularExpressionOptions.CaseInsensitive)
-//
-//            if regex.firstMatchInString(text!, options: nil, range: NSMakeRange(0, text!.length)) != nil {
-//                
-            
-//            }
-        }
+        
         let decimalCharacters = NSCharacterSet.decimalDigitCharacterSet()
-        
         let decimalRange = cityNameTextField.text!.rangeOfCharacterFromSet(decimalCharacters, options: NSStringCompareOptions(), range: nil)
-        
         if decimalRange != nil {
+            isValid = false
+            let alert = UIAlertController(title: "Error", message: "City name cannot contain numbers", preferredStyle: UIAlertControllerStyle.Alert)
             
+            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+            return isValid
         }
-        parent.addNewCity(text)
+        let symbols = NSCharacterSet.punctuationCharacterSet()
+        let symbolsRange = cityNameTextField.text!.rangeOfCharacterFromSet(symbols, options: NSStringCompareOptions(), range: nil)
+        if symbolsRange != nil {
+            isValid = false
+            let alert = UIAlertController(title: "Error", message: "City name cannot contain symbols", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+            return isValid
+        }
+        let invalidCharacters = NSCharacterSet.alphanumericCharacterSet().invertedSet
+        let invalidRange = cityNameTextField.text!.rangeOfCharacterFromSet(invalidCharacters, options: NSStringCompareOptions(), range: nil)
+        if invalidRange != nil {
+            isValid = false
+            let alert = UIAlertController(title: "Error", message: "City name cannot contain ilegal characters", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+            return isValid
+        }
+        return isValid
     }
     
     //Go back to previous screen
